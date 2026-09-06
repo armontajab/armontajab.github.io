@@ -32,7 +32,7 @@
 
 <header class="page">
   <p class="eyebrow">Experience</p>
-  <h1>Where I&rsquo;ve worked</h1>
+  <h1>What I&rsquo;ve worked on</h1>
   <p class="lead">Embedded hardware and firmware for autonomous robotics, and teaching in my own department.</p>
 </header>
 
@@ -41,7 +41,7 @@
     <div class="monogram">T</div>
     <div class="company-body">
       <h2>Tensor Intelligent Machines <span class="pill">Current</span></h2>
-      <p>Tehran &middot; Robotics company at Sharif University Science &amp; Technology Park, developing AI-driven autonomous parcel-sorting robots.</p>
+      <p>A knowledge-based robotics company in Tehran developing AI-driven autonomous parcel-sorting robots, where I work on embedded hardware and firmware for autonomous robotics.</p>
     </div>
   </div>
 
@@ -50,49 +50,49 @@
       <span class="when">Jun 2026 &ndash; Present</span>
       <div>
         <h3>Embedded Hardware Engineer</h3>
-        <p class="note">Firmware and board design for handheld and sensing subsystems.</p>
+        <p class="note">I work on firmware and board design for handheld and sensing subsystems.</p>
       </div>
     </div>
     <div class="role past">
       <span class="when">Sep 2025 &ndash; May 2026</span>
       <div>
         <h3>Engineering Intern</h3>
-        <p class="note">Joined during my fifth semester and stayed on full time.</p>
+        <p class="note">Joined the company as an electrical engineering intern during my fifth semester.</p>
       </div>
     </div>
   </div>
 </section>
 
 <section>
-  <p class="eyebrow">Selected work</p>
-  <h2>What I built there</h2>
+  <p class="eyebrow">Industry experience</p>
+  <h2>Selected work</h2>
   <article class="work">
     <div class="work-head">
-      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 5v14M6.5 5v14M10 5v10M13.5 5v14M17 5v10M20.5 5v14"/></svg></div>
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none"><rect x="2.6" y="4.5" width="2.2" height="15" rx="1" fill="currentColor"/><rect x="7" y="4.5" width="1.3" height="15" rx=".65" fill="currentColor" opacity=".45"/><rect x="10.4" y="4.5" width="2.6" height="15" rx="1.1" fill="currentColor"/><rect x="15.2" y="4.5" width="1.3" height="15" rx=".65" fill="currentColor" opacity=".45"/><rect x="18.6" y="4.5" width="2.2" height="15" rx="1" fill="currentColor"/></svg></div>
       <div>
         <span class="kicker">Firmware &middot; ESP32-S3</span>
         <h3>Handheld Barcode Terminal</h3>
       </div>
     </div>
 <p>FreeRTOS firmware that enumerates a commercial USB barcode scanner through the ESP-IDF USB Host HID stack as a boot-protocol keyboard, translating HID scancodes to ASCII and assembling complete barcode strings.</p><p>The application is partitioned into core-pinned FreeRTOS tasks &mdash; USB host, HID event queue, display and battery, debounced input &mdash; sharing a mutex-guarded SSD1306 OLED that reports battery level, a four-position channel selector, the scan count and the decoded barcode. Li-ion monitoring uses a ten-sample averaged ADC reading across a 2:1 divider mapped over the 3.0&ndash;4.2&nbsp;V range.</p>
-    <div class="chips"><span class="chip">ESP32-S3</span><span class="chip">FreeRTOS</span><span class="chip">ESP-IDF</span><span class="chip">USB Host HID</span><span class="chip">I&sup2;C</span><span class="chip">ADC</span><span class="chip">SSD1306</span></div>
+    <div class="chips"><span class="chip">ESP32-S3</span><span class="chip">FreeRTOS</span><span class="chip">ESP-IDF</span><span class="chip">USB Host</span><span class="chip">HID</span><span class="chip">I&sup2;C</span><span class="chip">ADC</span><span class="chip">SSD1306</span></div>
     <a class="repo" href="https://github.com/armontajab/esp32s3-usb-hid-barcode-terminal"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.34 1.12 2.91.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 015 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.81 0 .27.18.6.69.49A10.06 10.06 0 0022 12.25C22 6.58 17.52 2 12 2z"/></svg> View repository</a>
   </article>
   <article class="work">
     <div class="work-head">
-      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="12" height="12" rx="2.5"/><path d="M17.5 8.5a5 5 0 010 7M20.5 6a9 9 0 010 12"/></svg></div>
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none"><rect x="2.4" y="6" width="11.4" height="12" rx="2.6" fill="currentColor" opacity=".2"/><rect x="2.4" y="6" width="11.4" height="12" rx="2.6" stroke="currentColor" stroke-width="1.9"/><path d="M17.2 8.6a5 5 0 010 6.8M20.4 6a9 9 0 010 12" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></div>
       <div>
         <span class="kicker">Hardware &middot; Altium Designer</span>
         <h3>RFID Reader Board</h3>
       </div>
     </div>
-<p>An SMD board designed around an AOD4185 P-channel load switch, BC817 drivers, an 18&nbsp;V zener transient clamp, a buzzer and a four-button interface &mdash; including custom schematic symbols and footprints drawn from manufacturer datasheets.</p><p>Delivered with a sourced bill of materials carrying manufacturer part numbers and distributor pricing, so the board could be quoted and ordered without a second sourcing pass.</p>
-    <div class="chips"><span class="chip">Altium Designer</span><span class="chip">SMD layout</span><span class="chip">component libraries</span><span class="chip">BOM sourcing</span><span class="chip">load switching</span></div>
+<p>An SMD board designed around an AOD4185 P-channel load switch, BC817 drivers, an 18&nbsp;V zener transient clamp, a buzzer and a four-button interface &mdash; including custom schematic symbols and footprints drawn from manufacturer datasheets.</p><p>Delivered with a fully sourced bill of materials carrying manufacturer part numbers and distributor pricing, so the board could be quoted and ordered without a second sourcing pass. I also wrote the serial capture firmware used to decode the raw module output during bring-up.</p>
+    <div class="chips"><span class="chip">Altium Designer</span><span class="chip">SMD PCB layout</span><span class="chip">schematic &amp; footprint design</span><span class="chip">load switching</span><span class="chip">circuit protection</span></div>
     <a class="repo" href="https://github.com/armontajab/rfid-reader-board"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.34 1.12 2.91.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 015 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.81 0 .27.18.6.69.49A10.06 10.06 0 0022 12.25C22 6.58 17.52 2 12 2z"/></svg> View repository</a>
   </article>
   <article class="work">
     <div class="work-head">
-      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="4.5" cy="12" r="1.8"/><path d="M9 8.5a5.5 5.5 0 010 7M13 5.5a10 10 0 010 13M17 3a14.5 14.5 0 010 18"/></svg></div>
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="4.4" cy="12" r="2.3" fill="currentColor"/><path d="M9 8.4a5.6 5.6 0 010 7.2M13.2 5.4a10 10 0 010 13.2M17.4 2.8a14.4 14.4 0 010 18.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></div>
       <div>
         <span class="kicker">Firmware &middot; STM32G0</span>
         <h3>Ultrasonic Ranging Module</h3>
@@ -110,26 +110,26 @@
   <div class="teach">
     <article class="work">
       <div class="work-head">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="12" rx="2"/><path d="M12 16v4M8 20h8M7 8.5l2.5 2L7 13M12.5 13h4"/></svg></div>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none"><rect x="2.4" y="4" width="19.2" height="12" rx="2.2" fill="currentColor" opacity=".18"/><rect x="2.4" y="4" width="19.2" height="12" rx="2.2" stroke="currentColor" stroke-width="1.9"/><path d="M12 16v4M8.4 20h7.2M6.8 8.6l2.6 2-2.6 2M12.6 12.6h4.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div>
           <span class="kicker">Instructor</span>
           <h3>Altium Designer PCB Workshop</h3>
         </div>
       </div>
       <p class="muted" style="font-size:.86rem;margin-bottom:.6rem">Mechatronics Student Association, Shahid Beheshti University</p>
-      <p>Designed and delivered a hands-on workshop for undergraduates covering schematic capture, library and footprint management, board layout and design-rule checking.</p>
+      <p>Designed and delivered a hands-on PCB design workshop for undergraduate students, covering schematic capture, component library and footprint management, PCB layout, and design-rule checking in Altium Designer.</p>
     </article>
 
     <article class="work">
       <div class="work-head">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L2.5 8 12 13l9.5-5L12 3z"/><path d="M6 10.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5M21.5 8v6"/></svg></div>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3L2.6 8 12 13l9.4-5L12 3z" fill="currentColor" opacity=".2"/><path d="M12 3L2.6 8 12 13l9.4-5L12 3z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M6.2 10.6V16c0 1.7 2.6 3 5.8 3s5.8-1.3 5.8-3v-5.4M21.4 8v6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></div>
         <div>
           <span class="kicker">Teaching Assistant</span>
-          <h3>Electrical Circuits</h3>
+          <h3>Electrical Circuits Laboratory</h3>
         </div>
       </div>
       <p class="muted" style="font-size:.86rem;margin-bottom:.6rem">Department of Electrical Engineering, Shahid Beheshti University</p>
-      <p>Ran weekly problem-solving sessions and graded assignments for the combined Circuits I &amp; II course.</p>
+      <p>Conducted weekly problem-solving sessions, graded laboratory assignments and reports, and held office hours for the combined Circuits I &amp; II course.</p>
     </article>
   </div>
 

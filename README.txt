@@ -1,68 +1,59 @@
-==================================================================
 ALIREZA MONTAJAB — PERSONAL WEBSITE
-==================================================================
-Status: complete. All ten GitHub links point at github.com/armontajab
-and every placeholder has been filled in.
+====================================
+Complete. cv.pdf is included. No placeholders.
 
 
-ONE THING LEFT TO DO
---------------------
-Put your CV in this folder with the exact filename:  cv.pdf
-
-Until you do, every "Download CV" button returns 404. There are
-buttons on the home page, the About page, the Experience page and
-the Contact page.
-
-
-PAGES
------
-index.html          Home
-about.html          Background, skills, education, coursework
-experience.html     Tensor Intelligent Machines + teaching
-projects.html       Grid of seven academic projects
-p-*.html            One page per academic project
-contact.html        Email, GitHub, CV
-style.css           All styling, light and dark
-motion.js           Scroll reveal, stat counters, theme toggle
-img/portrait.jpg    Your photo, cropped and retouched
+WHAT THIS UPDATE ADDED (from your CV)
+-------------------------------------
+- Research Interests section on the About page. This is the single
+  most important section for a graduate application and the site
+  did not have it.
+- Honors & Awards section: Full Tuition Scholarship 2023-2027 and
+  top 1% Konkur rank. Neither was anywhere on the site before.
+- QS ranking line under Education (#741-750 worldwide, #214 Asia).
+- LinkedIn card on Contact and a LinkedIn button on the home page.
+- DMA, finite state machines, BOM sourcing and logic analyser added
+  to the skills rows.
+- Barcode terminal: the Altium carrier PCB you designed.
+- RFID board: the antenna and clock/data interfaces, and the serial
+  capture firmware you wrote for bring-up.
+- Teaching assistant: office hours.
+- cv.pdf added, so every Download CV button now works.
 
 
-GITHUB LINKS ON THE SITE
-------------------------
-experience.html
-    esp32s3-usb-hid-barcode-terminal
-    rfid-reader-board
-    stm32g0-ultrasonic-ranging
+ONE CHANGE YOU MUST CONFIRM
+---------------------------
+Major GPA is now shown as 16.00/20 on the site, matching your CV.
 
-p-controller.html      stm32-water-level-temperature-controller
-p-datapath.html        8bit-74ls-arithmetic-datapath
-p-maglev.html          esp32cam-magnetic-levitation
-p-lighting.html        esp32-smart-lighting
-p-hbridge.html         hbridge-motor-driver-pcb
-p-transmission.html    transmission-line-parameter-calculator
-p-network.html         fourth-order-rlc-network-analysis
+It previously showed 17.70/20 because that is the figure you gave
+me verbally. Three separate versions of your CV all say 16.00, so
+the site has been changed to agree with the document you will
+actually submit.
 
-index.html / contact.html    github.com/armontajab (profile)
+If 17.70 is the correct figure, fix it in TWO places:
+    index.html   search for 16.00
+    about.html   search for 16.00
+and correct your CV as well. The two must never disagree.
 
 
-PUBLISHING ON CLOUDFLARE PAGES
-------------------------------
-1. dash.cloudflare.com -> Workers & Pages -> Create
-2. Upload your static files
-3. Project name: alirezamontajab
-4. Drag the CONTENTS of this folder in (not the folder itself)
-5. Deploy
-
-Live at: alirezamontajab.pages.dev
-To update: same project -> Create deployment -> upload again.
+STILL TO FIX IN THE CV ITSELF (not the site)
+--------------------------------------------
+Page 1 of your CV still contains two placeholders:
+    Senior Design Project ... [topic], supervised by Dr. [name]
+Fill these in or delete the line before you submit anything.
 
 
-AFTER IT IS LIVE
-----------------
-- Click all ten repository buttons and confirm none returns 404.
-  A 404 means that repo was published private. Fix it in the repo's
-  Settings -> Danger Zone -> Change repository visibility.
-- Add the site URL to the Website field of each repository and to
-  your GitHub profile.
-- Check your major GPA against your transcript. The site says
-  17.70/20, your CV PDF says 16.00/20. They cannot disagree.
+FIXED IN THIS BUILD
+------------------
+The Contact page had an unclosed HTML comment. Everything after the
+Email and CV cards - GitHub, LinkedIn, the Location section and the
+footer - was being swallowed by it and never rendered. The comment
+is gone and the page now shows four cards: Email, LinkedIn, GitHub
+and CV.
+
+
+UPDATING THE LIVE SITE
+----------------------
+See the instructions in the chat. In short: replace the files in
+your armontajab.github.io folder with these, then in GitHub Desktop
+write a summary, Commit to main, and Push origin.

@@ -43,25 +43,27 @@
 
 <section>
 <h2>The problem</h2>
-<p>The brief called for a controller holding two physical quantities at once: the height of the water in a tank and the temperature of that water. Both loops had to run continuously while a user changed setpoints from a keypad, and neither could stall while the display and clock kept updating.</p>
+<p>The project required a controller to regulate two physical variables simultaneously: the water level in a tank and its temperature. Both control loops had to run continuously while the user changed setpoints through a keypad, without either loop being stalled by the display or real-time clock.</p>
 
 <h2>Measuring the tank without a driver</h2>
-<p>An HC-SR04 ultrasonic sensor above the tank measures the distance down to the water surface, which gives the level by subtraction. The requirement was to read it without a library, so the echo pulse is timed directly using TIM2 input capture together with interrupt handling. Capturing the rising and falling edges in hardware rather than polling in software keeps the measurement accurate while the rest of the system continues to run.</p>
+<p>An HC-SR04 ultrasonic sensor mounted above the tank measures the distance to the water surface, which is used to determine the water level.</p>
+<p>Because the sensor had to be interfaced without a third-party library, the echo pulse is timed directly using TIM2 input capture and interrupt handling. The rising and falling edges are captured in hardware rather than polled in software, allowing the rest of the system to continue running while the measurement is taken.</p>
 
 <h2>Two control loops</h2>
-<p>The level loop drives the inlet pump over a 100 Hz PWM channel, scaling duty cycle with the level error: full power at maximum error, and the pump cut entirely at zero or negative error. The temperature loop is structurally the same — an LM35 is sampled through the ADC and a heating element is driven by PWM toward a 60 &deg;C setpoint.</p>
+<p>The level loop drives the inlet pump using a 100&nbsp;Hz PWM signal, with the duty cycle scaled according to the level error: full power at maximum error and the pump fully off at zero or negative error.</p>
+<p>The temperature loop follows the same control structure: an LM35 is sampled through the ADC, and a heating element is driven by PWM toward a 60&nbsp;&deg;C setpoint.</p>
 
 <h2>Interface</h2>
-<p>A 16&times;4 LCD shows the current level, the active setpoint, the water temperature and the RTC time on the bottom line of every screen. A 4&times;4 keypad and EXTI-driven navigation buttons open a menu for entering a new setpoint or setting the clock. Entered values are range-validated and rejected on screen if they fall outside the allowed band; successful changes are confirmed over UART; and if the temperature drops below its threshold the display clears and blinks a warning.</p>
+<p>A 16&times;4 LCD displays the current water level, active setpoint, and water temperature, with the RTC time shown on the bottom line of each screen. A 4&times;4 keypad and EXTI-driven navigation buttons open a menu for entering a new setpoint or setting the clock. Entered values are range-validated and rejected on screen if they fall outside the allowed range; successful changes are confirmed over UART; and if the temperature drops below its threshold, the display clears and blinks a warning.</p>
 
 <h2>What I took from it</h2>
-<p>The real difficulty was not any single feature but the scheduling. Interrupt-driven sensing, two PWM outputs, a scanned keypad, a character display and a real-time clock all share one Cortex-M3 without any of them blocking the others.</p>
+<p>The real difficulty was not any single feature, but coordinating them on a single Cortex-M3. Interrupt-driven sensing, two PWM outputs, a scanned keypad, a character display, and a real-time clock all had to operate continuously without one function blocking the others.</p>
 </section>
 
 <section>
   <div class="callout">
     <p class="mono" style="color:var(--signal)">Context</p>
-    <p class="muted" style="font-size:.92rem;margin:0">Digital Systems II final project &middot; Supervisor: Dr. Asharioun &middot; Team of 3 — led the design and implemented all firmware.</p>
+    <p class="muted" style="font-size:.92rem;margin:0">Digital Systems II final project &middot; Supervisor: Dr. Asharioun &middot; Shahid Beheshti University, Autumn 2025</p>
   </div>
   <div class="btns"><a class="btn" href="projects.html">&larr; Back to all projects</a><a class="btn solid" href="https://github.com/armontajab/stm32-water-level-temperature-controller"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.34 1.12 2.91.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 015 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.81 0 .27.18.6.69.49A10.06 10.06 0 0022 12.25C22 6.58 17.52 2 12 2z"/></svg>View repository</a></div>
 </section>
