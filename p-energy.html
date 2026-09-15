@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transmission line parameter calculator — Alireza Montajab</title>
+<meta name="description" content="Senior design project: a wireless monitoring system that samples mains voltage and current, applies DSP on a central node, and compares measured consumption against reference patterns.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>(function(){var d=document.documentElement;d.className="js";try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches))d.setAttribute("data-theme","dark")}catch(e){}})()</script>
+</head>
+<body>
+<div class="nav"><div class="wrap">
+  <a class="brand" href="index.html">Alireza Montajab</a>
+  <nav class="links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="experience.html">Experience</a>
+    <a class="on" href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+    <a href="activities.html">Activities</a>
+    <a href="contact.html">Contact</a>
+    <button class="themetoggle" type="button" aria-label="Switch theme" title="Switch theme">
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </nav>
+</div></div>
+
+<div class="wrap">
+
+<header class="page">
+  <a class="back" href="projects.html"><span>&larr;</span> All projects</a>
+  <div class="detail-head">
+    <div class="ico wip-ico"><svg viewBox="0 0 24 24" fill="none"><rect x="2.6" y="4.4" width="18.8" height="15.2" rx="3" fill="currentColor" opacity=".18"/><rect x="2.6" y="4.4" width="18.8" height="15.2" rx="3" stroke="currentColor" stroke-width="1.9"/><path d="M5.6 14.4l3-4.4 2.6 3.4 2.4-5 2.6 6 2.2-3" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div>
+      <span class="wip-pill"><span class="wip-dot"></span> In progress</span>
+      <span class="mono muted" style="display:block">Senior Design Project &middot; Autumn 2026 &ndash; Spring 2027</span>
+      <h1 style="font-size:clamp(1.55rem,3.9vw,2.05rem);margin-top:.2rem">Digital signal processing for energy consumption monitoring</h1>
+    </div>
+  </div>
+  <p class="lead" style="margin-top:1rem">A monitoring system that measures the voltage and current of mains-powered appliances, samples them digitally, transmits them over Wi-Fi, and applies digital signal processing on a central node to extract power, energy and consumption behaviour &mdash; then compares the result against published reference patterns.</p>
+  <div class="chips"><span class="chip">ESP32</span><span class="chip">ADC sampling</span><span class="chip">DSP</span><span class="chip">ZMPT101B</span><span class="chip">ACS712</span><span class="chip">Wi-Fi</span><span class="chip">Python</span><span class="chip">mains safety</span></div>
+</header>
+
+<section>
+<h2>The problem</h2>
+<p>A single energy figure says very little about how an appliance actually behaves. Consumption depends on the load type, operating conditions and duration, and it changes over time. Understanding that behaviour requires looking at how the electrical quantities vary, not just what they total.</p>
+<p>There is a second gap: measuring consumption does not tell you whether it is reasonable. That judgement needs a reference to compare against. This project uses published consumption data from Tavanir and the Iranian National Standards Organisation as that baseline.</p>
+
+<h2>Architecture</h2>
+<p>Each monitoring unit measures the voltage and current of a load, samples both through the ESP32's ADC, and transmits the digital samples over the existing Wi-Fi network. A laptop acts as the central node: it receives, separates and organises the data from every unit, then runs the processing chain.</p>
+<p>There is deliberately no central microcontroller. One ESP32 per monitoring unit is enough, and moving the analysis onto a laptop means the signal processing is not constrained by what fits on an embedded target.</p>
+
+<h2>Measurement and safety</h2>
+<p>Voltage is measured with a ZMPT101B and current with an ACS712. Because the unit connects to 220&nbsp;V mains, the design separates the mains section, the measurement section and the low-voltage electronics: an insulated ABS enclosure, an RCBO for overcurrent, short-circuit and residual-current protection, a manual isolating switch, standard terminals, cable glands, and no accessible live parts.</p>
+
+<h2>Signal processing</h2>
+<p>The raw samples are checked for quality, filtered to remove unwanted components, and normalised before analysis. From the processed signals the system extracts RMS voltage and current, mean and standard deviation, amplitude, current variation and waveform characteristics, with frequency-domain features where they add information.</p>
+<p>Power is then computed over defined time windows so that variation within an operating cycle is visible, and energy follows from power and time.</p>
+
+<h2>Analysis</h2>
+<p>Measured energy is compared against the reference pattern, and the deviation is analysed: how consumption trends over time, how power varies, how different appliances compare to each other and to their reference values, and how the load type shapes the consumption pattern. A lamp, a kettle and a vacuum cleaner were chosen as test loads precisely because they behave very differently.</p>
+
+<h2>Why this project</h2>
+<p>The problem itself belongs to power engineering &mdash; load behaviour, voltage, current, power, energy, consumption patterns. The method is entirely digital: sampling, processing, feature extraction and analysis. That split is the point of the project.</p>
+</section>
+
+<section>
+  <div class="status">
+    <span class="mono">Status</span>
+    <p>Proposal approved. Currently in the design and construction phase, building the first monitoring unit. Results, measurements and code will be published here as the work progresses.</p>
+  </div>
+  <div class="btns"><a class="btn" href="projects.html">&larr; Back to all projects</a></div>
+</section>
+
+</div>
+
+<footer><div class="wrap">
+  <span class="mono">Alireza Montajab &middot; Tehran</span>
+  <span class="mono">Last updated September 2026</span>
+</div></footer>
+
+<script src="motion.js" defer></script>
+</body>
+</html>

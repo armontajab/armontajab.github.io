@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transmission line parameter calculator — Alireza Montajab</title>
+<meta name="description" content="A two-wheel differential drive robot estimating its pose by fusing wheel odometry with an IMU through a Kalman filter, with gas sensing and MQTT telemetry.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>(function(){var d=document.documentElement;d.className="js";try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches))d.setAttribute("data-theme","dark")}catch(e){}})()</script>
+</head>
+<body>
+<div class="nav"><div class="wrap">
+  <a class="brand" href="index.html">Alireza Montajab</a>
+  <nav class="links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="experience.html">Experience</a>
+    <a class="on" href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+    <a href="activities.html">Activities</a>
+    <a href="contact.html">Contact</a>
+    <button class="themetoggle" type="button" aria-label="Switch theme" title="Switch theme">
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </nav>
+</div></div>
+
+<div class="wrap">
+
+<header class="page">
+  <a class="back" href="projects.html"><span>&larr;</span> All projects</a>
+  <div class="detail-head">
+    <div class="ico wip-ico"><svg viewBox="0 0 24 24" fill="none"><rect x="4.2" y="7.4" width="15.6" height="10" rx="3" fill="currentColor" opacity=".18"/><rect x="4.2" y="7.4" width="15.6" height="10" rx="3" stroke="currentColor" stroke-width="1.9"/><circle cx="9" cy="12.4" r="1.5" fill="currentColor"/><circle cx="15" cy="12.4" r="1.5" fill="currentColor"/><path d="M12 4.2v3.2M2.4 11.4v2M21.6 11.4v2M8 17.4v2.4M16 17.4v2.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="3.4" r="1.3" fill="currentColor"/></svg></div>
+    <div>
+      <span class="wip-pill"><span class="wip-dot"></span> In progress</span>
+      <span class="mono muted" style="display:block">Independent project &middot; Started September 2026</span>
+      <h1 style="font-size:clamp(1.55rem,3.9vw,2.05rem);margin-top:.2rem">Differential drive robot with sensor fusion</h1>
+    </div>
+  </div>
+  <p class="lead" style="margin-top:1rem">A two-wheel differential drive platform that estimates its own position and heading by fusing two independent sources &mdash; wheel encoder odometry and an inertial gyroscope &mdash; through a Kalman filter, and reports its state over MQTT.</p>
+  <div class="chips"><span class="chip">ESP32</span><span class="chip">Kalman filter</span><span class="chip">sensor fusion</span><span class="chip">odometry</span><span class="chip">MPU6050</span><span class="chip">MQTT</span><span class="chip">PID</span><span class="chip">FreeRTOS-style scheduling</span></div>
+</header>
+
+<section>
+<h2>The idea</h2>
+<p>This is a testbed for state estimation and sensor fusion rather than a robot for its own sake.</p>
+<p>Wheel odometry is accurate over short distances but accumulates error: every slip is integrated and never recovered. A gyroscope does not slip, but it drifts. The two failure modes are independent, which is exactly the condition under which fusion helps. A Kalman filter combines them into an estimate better than either alone &mdash; and demonstrating that improvement quantitatively is the scientific core of the project, not a side note.</p>
+
+<h2>Platform</h2>
+<p>A two-level chassis carrying two TT gearmotors with 57.5&nbsp;mm wheels and a ball caster, driven through an L298N. Encoder discs with 20 slots and LM393 modules give roughly 9&nbsp;mm of travel per pulse. An MPU6050 sits between the two wheels on the rotation axis. Power comes from two 18650 cells in series through a BMS and an LM2596 buck to the 5&nbsp;V logic rail.</p>
+<p>Wheel speed is measured from the interval between pulses rather than by counting pulses in a fixed window &mdash; at low speeds the period method stays accurate where pulse counting quantises badly.</p>
+
+<h2>Estimation</h2>
+<p>Differential odometry integrates the two wheel speeds into pose. The fusion layer is a one-dimensional Kalman filter on heading: prediction from the gyroscope rate with a growing covariance, and update from the odometry heading as the observation, with the measurement covariance tied to speed &mdash; at higher speed, where slip is more likely, odometry is trusted less.</p>
+<p>The filtered heading then feeds back into the position equations. Tuning the process and measurement covariances is empirical, and recording how they were tuned is part of the result rather than an implementation detail.</p>
+
+<h2>Evaluation</h2>
+<p>The point of the project is the comparison, so the experiments are designed to produce numbers:</p>
+<div class="row"><span class="mono">Straight line</span><p>3&nbsp;m, five repetitions &mdash; lateral and longitudinal error, with and without closed-loop speed control</p></div>
+<div class="row"><span class="mono">Rotation</span><p>360&deg; in place, five repetitions &mdash; heading error for odometry alone, gyro alone, and fusion</p></div>
+<div class="row"><span class="mono">Square test</span><p>1&times;1&nbsp;m square returning to origin, both directions &mdash; the classic measure of odometry quality</p></div>
+<div class="row"><span class="mono">Slip disturbance</span><p>Controlled slip on a low-friction surface &mdash; showing fusion degrading more gracefully than odometry alone</p></div>
+
+<h2>Environment and telemetry</h2>
+<p>An MQ-5 sensor detects combustible gas and an HC-SR04 handles obstacle avoidance. Pose, gas concentration, environmental data and battery state are published over MQTT to a broker on a laptop, with an OLED showing local state.</p>
+</section>
+
+<section>
+  <div class="status">
+    <span class="mono">Status</span>
+    <p>In build. Currently working through component testing and mechanical assembly. Comparative results for odometry alone against odometry fused with the IMU will be published here, along with the firmware.</p>
+  </div>
+  <div class="btns"><a class="btn" href="projects.html">&larr; Back to all projects</a></div>
+</section>
+
+</div>
+
+<footer><div class="wrap">
+  <span class="mono">Alireza Montajab &middot; Tehran</span>
+  <span class="mono">Last updated September 2026</span>
+</div></footer>
+
+<script src="motion.js" defer></script>
+</body>
+</html>

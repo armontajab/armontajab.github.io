@@ -6,7 +6,7 @@
 (function () {
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var SELECTOR = 'section, .tile, .ccard, .stat, .work, .company, .roles, .detail-head, .page .lead, .page .chips';
+  var SELECTOR = 'section, .tile, .ccard, .stat, .work, .company, .roles, .act, .band, .ielts, .detail-head, .page .lead, .page .chips';
   var targets = Array.prototype.slice.call(document.querySelectorAll(SELECTOR));
 
   /* ---------- if motion is off, show everything immediately ---------- */
@@ -25,6 +25,7 @@
   stagger(Array.prototype.slice.call(document.querySelectorAll('.cards .ccard')), 80);
   stagger(Array.prototype.slice.call(document.querySelectorAll('.stats .stat')), 90);
   stagger(Array.prototype.slice.call(document.querySelectorAll('.work')), 80);
+  stagger(Array.prototype.slice.call(document.querySelectorAll('.band')), 110);
 
   /* ---------- reveal on scroll ---------- */
   var io = new IntersectionObserver(function (entries) {
