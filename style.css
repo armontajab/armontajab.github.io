@@ -2,79 +2,65 @@
    Alireza Montajab — shared styles
    ========================================================== */
 :root{
-  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,system-ui,sans-serif;
-  --serif:Georgia,'Iowan Old Style','Times New Roman',serif;
-  --mono:ui-monospace,'SF Mono','Cascadia Mono',Menlo,Consolas,monospace;
-  --deep:#1B1B45;
-  --deep-2:#2A2A63;
-  --paper:#F9F9FC;
-  --bg:#F9F9FC;
+  --bg:#FAFBFA;
   --panel:#FFFFFF;
-  --card:#FFFFFF;
-  --ink:#15162B;
-  --muted:#61637C;
-  --rule:#E4E4EC;
-  --signal:#4F46E5;
-  --signal-dark:#3E37BC;
-  --tint:#EEEDFC;
-  --shadow:0 4px 24px rgba(27,27,69,.09);
+  --ink:#16201C;
+  --muted:#6E7A75;
+  --rule:#E4EAE7;
+  --signal:#12A47C;
+  --signal-dark:#0B7659;
+  --tint:#EDF7F3;
+  --font:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --mono:ui-monospace,'SF Mono','Cascadia Mono',Menlo,Consolas,monospace;
+  --shadow:0 4px 24px rgba(18,60,46,.07);
   --on-signal:#FFFFFF;
-  --nav-bg:rgba(249,249,252,.9);
+  --nav-bg:rgba(250,251,250,.9);
   --avatar-ring:#FFFFFF;
-  --tile-hover-border:#C2BDF5;
-  --ico-hover:#E3E1FB;
-  --chip-border:#DAD7F8;
-  --chip-hover-bg:#E3E1FB;
-  --chip-hover-border:#C2BDF5;
-  --ico-a:#F0EFFD;
-  --ico-b:#E5E3FA;
-  --ico-edge:#D6D3F6;
+  --tile-hover-border:#BFE3D5;
+  --ico-hover:#DFF1E9;
+  --chip-border:#D6EDE3;
+  --chip-hover-bg:#DFF1E9;
+  --chip-hover-border:#B9E0D0;
+  --ico-a:#E4F4EE;
+  --ico-b:#D2EDE2;
+  --ico-edge:#C3E6D7;
   --ico-hi:rgba(255,255,255,.75);
-  --wip-a:#FDF2E8;
-  --wip-b:#FAE6D4;
-  --wip-edge:#E9C39B;
-  --wip-bg:#FDF6EE;
-  --wip-ink:#9A5B18;
-  --font:Vazirmatn,Tahoma,system-ui,sans-serif;
+  --wip-a:#FDF3E3;
+  --wip-b:#F8E8CE;
+  --wip-edge:#E4C89A;
+  --wip-bg:#FDF6EA;
+  --wip-ink:#9A6A16;
   color-scheme:light;
 }
 
 /* ---------------- dark theme ---------------- */
 [data-theme="dark"]{
-  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,system-ui,sans-serif;
-  --serif:Georgia,'Iowan Old Style','Times New Roman',serif;
-  --mono:ui-monospace,'SF Mono','Cascadia Mono',Menlo,Consolas,monospace;
-  --deep:#12122B;
-  --deep-2:#1D1D45;
-  --paper:#0E0E1A;
-  --bg:#0E0E1A;
-  --panel:#161627;
-  --card:#161627;
-  --ink:#E9E9F2;
-  --muted:#8D8FA6;
-  --rule:#262640;
-  --signal:#8B85F5;
-  --signal-dark:#A5A0FA;
-  --tint:#1D1D33;
-  --shadow:0 4px 26px rgba(0,0,0,.55);
-  --on-signal:#0B0B18;
-  --nav-bg:rgba(14,14,26,.9);
-  --avatar-ring:#1D1D33;
-  --tile-hover-border:#4A459B;
-  --ico-hover:#26244A;
-  --chip-border:#343169;
-  --chip-hover-bg:#26244A;
-  --chip-hover-border:#4A459B;
-  --ico-a:#232145;
-  --ico-b:#1B1A36;
-  --ico-edge:#37346B;
+  --bg:#0F1614;
+  --panel:#161F1C;
+  --ink:#E7EFEB;
+  --muted:#8FA09A;
+  --rule:#243230;
+  --signal:#3ED9A6;
+  --signal-dark:#69E7BE;
+  --tint:#1A2A26;
+  --shadow:0 4px 26px rgba(0,0,0,.45);
+  --on-signal:#0C1513;
+  --nav-bg:rgba(15,22,20,.9);
+  --avatar-ring:#1E2B27;
+  --tile-hover-border:#2F5A4B;
+  --ico-hover:#22382F;
+  --chip-border:#2B453D;
+  --chip-hover-bg:#22382F;
+  --chip-hover-border:#3A5F53;
+  --ico-a:#1F3A32;
+  --ico-b:#162C26;
+  --ico-edge:#2E5348;
   --ico-hi:rgba(255,255,255,.06);
-  --wip-a:#33280F;
-  --wip-b:#2A2110;
-  --wip-edge:#5A4720;
-  --wip-bg:#241D10;
-  --wip-ink:#D8AD5C;
-  --font:Vazirmatn,Tahoma,system-ui,sans-serif;
+  --wip-a:#33290F;
+  --wip-b:#2A2210;
+  --wip-edge:#5A4820;
+  --wip-bg:#241E10;
+  --wip-ink:#D8AE5C;
   color-scheme:dark;
 }
 html,body{transition:background-color .3s ease, color .3s ease}
@@ -544,3 +530,28 @@ footer .mono{color:var(--muted)}
   .band{--w-applied:1}
   .js .band .fill{width:var(--w)}
 }
+
+/* ---------------- selected courses ---------------- */
+.courses{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:1.3rem}
+.course{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  background:var(--panel);border:1px solid var(--rule);border-radius:13px;
+  padding:.85rem 1.05rem;transition:border-color .2s,transform .2s;
+}
+.course:hover{border-color:var(--tile-hover-border);transform:translateY(-2px)}
+.course span{font-size:.93rem;line-height:1.4}
+.grade{
+  flex:0 0 auto;font-family:var(--sans);font-weight:650;font-size:.82rem;
+  min-width:2.5rem;text-align:center;padding:.28rem .55rem;border-radius:8px;
+  background:linear-gradient(145deg,var(--ico-a),var(--ico-b));
+  border:1px solid var(--ico-edge);color:var(--signal-dark);
+}
+.grade.plus{background:var(--signal);border-color:var(--signal);color:var(--on-signal)}
+@media(max-width:40rem){.courses{grid-template-columns:1fr}}
+
+/* ---------------- school line ---------------- */
+.school{margin-top:2.2rem;padding-top:1.8rem;border-top:1px solid var(--rule)}
+.school h3{font-size:1.02rem;margin:0 0 .2rem}
+.school .meta{color:var(--muted);font-size:.9rem;margin:0 0 .6rem}
+.school p{font-size:.93rem;margin:0}
+.stat b small{font-size:.82rem;color:var(--muted);font-weight:400;display:block;margin-top:.25rem;letter-spacing:0}
