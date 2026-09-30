@@ -3,134 +3,37 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Projects — Alireza Montajab</title>
-<meta name="description" content="Digital electronics, embedded systems, power and control projects by Alireza Montajab.">
+<title>Projects, Alireza Montajab</title>
+<meta name="description" content="Nine projects across discrete logic, bare metal firmware, PCB design, power electronics, signal processing and closed loop control.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>(function(){var d=document.documentElement;d.className="js";try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme:dark)").matches))d.setAttribute("data-theme","dark")}catch(e){}})()</script>
 <link rel="stylesheet" href="style.css">
-<script>(function(){var d=document.documentElement;d.className="js";try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches))d.setAttribute("data-theme","dark")}catch(e){}})()</script>
 </head>
 <body>
-<div class="nav"><div class="wrap">
-  <a class="brand" href="index.html">Alireza Montajab</a>
-  <nav class="links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="experience.html">Experience</a>
-    <a class="on" href="projects.html">Projects</a>
-    <a href="skills.html">Skills</a>
-    <a href="activities.html">Activities</a>
-    <a href="contact.html">Contact</a>
-    <button class="themetoggle" type="button" aria-label="Switch theme" title="Switch theme">
-      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z"/></svg>
-      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-    </button>
-  </nav>
-</div></div>
+<header class="nav"><div class="wrap"><a class="brand" href="index.html">Alireza Montajab</a><nav class="links" aria-label="Main"><a href="index.html">Home</a><a href="about.html">About</a><a href="experience.html">Experience</a><a href="projects.html" aria-current="page">Projects</a><a href="skills.html">Skills</a><a href="activities.html">Activities</a><a href="contact.html">Contact</a></nav><button class="themetoggle" type="button" aria-label="Switch colour theme"><span class="moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.5A8.6 8.6 0 019.5 3.6a8.6 8.6 0 1010.9 10.9z"/></svg></span><span class="sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.6v2.2M12 19.2v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg></span></button></div></header>
+<main>
 <div class="wrap">
-
-<header class="page">
-  <p class="eyebrow">Projects</p>
-  <h1>Selected work</h1>
-  <p class="lead">Nine projects spanning discrete TTL logic, bare-metal firmware, PCB design, power electronics, signal processing, and closed-loop control. Two are currently in progress. Select a project to read the full write-up.</p>
-</header>
-
-
-<section style="padding-top:0;border-top:none">
-  <p class="eyebrow">In progress</p>
-  <h2>Currently building</h2>
-  <div class="tiles" style="margin-top:1.4rem">
-
-    <a class="tile wip" href="p-energy.html">
-      <div class="ico"><svg viewBox="0 0 24 24" fill="none"><rect x="2.6" y="4.4" width="18.8" height="15.2" rx="3" fill="currentColor" opacity=".18"/><rect x="2.6" y="4.4" width="18.8" height="15.2" rx="3" stroke="currentColor" stroke-width="1.9"/><path d="M5.6 14.4l3-4.4 2.6 3.4 2.4-5 2.6 6 2.2-3" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <span class="wip-pill"><span class="wip-dot"></span> In progress</span>
-      <span class="when">Senior Design Project &middot; 2026&ndash;2027</span>
-      <h3>Digital signal processing for energy consumption monitoring</h3>
-      <p class="sub">Wireless monitoring units sampling mains voltage and current, with DSP and reference comparison on a central node.</p>
-      <span class="go">Read more <span>&rarr;</span></span>
-    </a>
-
-    <a class="tile wip" href="p-robot.html">
-      <div class="ico"><svg viewBox="0 0 24 24" fill="none"><rect x="4.2" y="7.4" width="15.6" height="10" rx="3" fill="currentColor" opacity=".18"/><rect x="4.2" y="7.4" width="15.6" height="10" rx="3" stroke="currentColor" stroke-width="1.9"/><circle cx="9" cy="12.4" r="1.5" fill="currentColor"/><circle cx="15" cy="12.4" r="1.5" fill="currentColor"/><path d="M12 4.2v3.2M2.4 11.4v2M21.6 11.4v2M8 17.4v2.4M16 17.4v2.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="3.4" r="1.3" fill="currentColor"/></svg></div>
-      <span class="wip-pill"><span class="wip-dot"></span> In progress</span>
-      <span class="when">Independent project &middot; Started Sep 2026</span>
-      <h3>Differential drive robot with sensor fusion</h3>
-      <p class="sub">Pose estimation by fusing wheel odometry with an IMU through a Kalman filter, with MQTT telemetry.</p>
-      <span class="go">Read more <span>&rarr;</span></span>
-    </a>
-
+  <div class="head">
+    <h1>Projects</h1>
+    <p class="lead">Nine projects across discrete logic, bare metal firmware, PCB design, power electronics, signal processing and closed loop control. The two at the top are still being built.</p>
+  </div>
+</div>
+<section style="border-top:none">
+  <div class="wrap">
+    <div class="grid"><a class="entry open" href="p-energy.html"><span class="top"><span class="tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.8" width="18" height="14.4" rx="2.4"/><path d="M6.4 14.2l2.8-4.2 2.5 3.3 2.3-4.8 2.5 5.7 2.1-2.9"/></svg></span><span class="when">Senior design project, 2026 to 2027</span></span><h3>Digital signal processing for energy consumption monitoring<span class="live">In progress</span></h3><p>Monitoring units sample mains voltage and current, and a central node runs the signal processing and reference comparison.</p></a><a class="entry open" href="p-robot.html"><span class="top"><span class="tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.6" y="7.8" width="14.8" height="9.2" rx="2.4"/><path d="M9.2 12.3h.01M14.8 12.3h.01M12 4.6v3.2M3 11.6v1.8M21 11.6v1.8M8.4 17v2.4M15.6 17v2.4"/></svg></span><span class="when">Independent, from September 2026</span></span><h3>Differential drive robot with sensor fusion<span class="live">In progress</span></h3><p>Pose estimation that fuses wheel odometry with an inertial gyroscope through a Kalman filter, reported over MQTT.</p></a><a class="entry" href="p-controller.html"><span class="top"><span class="tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4" width="11" height="16" rx="2"/><path d="M3.5 13.2h11M3.5 16.4h11"/><path d="M19.5 5v8.6"/><circle cx="19.5" cy="17.2" r="2.8"/></svg></span><span class="when">Digital Systems II, autumn 2025</span></span><h3>Water level and temperature control system</h3><p>Bare metal STM32 firmware holding tank level and water temperature with two independent loops.</p></a><a class="entry" href="p-maglev.html"><span class="top"><span class="tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4.3h12M7.2 7.5h9.6M8.6 10.7h6.8"/><circle cx="12" cy="17.3" r="3.2"/></svg></span><span class="when">Mechatronics, spring 2026</span></span><h3>Magnetic levitation system with visual feedback</h3><p>A steel ball suspended under an electromagnet by a PID loop whose only position sensor is a camera.</p></a><a class="entry" href="p-datapath.html"><span class="top"><span class="tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7.5" y="7.5" width="9" height="9" rx="1.6"/><path d="M10.3 7.5V4.4M13.7 7.5V4.4M10.3 19.6v-3.1M13.7 19.6v-3.1M7.5 10.3H4.4M7.5 13.7H4.4M19.6 10.3h-3.1M19.6 13.7h-3.1"/></svg></span><span class="when">Digital Systems I, spring 2025</span></span><h3>8-bit arithmetic datapath in 74-series logic</h3><p>An 8 bit datapath assembled entirely from discrete 74LS parts and simulated in Proteus.</p></a><a class="entry" href="p-lighting.html"><span class="top"><span class="tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 8.7a14.6 14.6 0 0118.8 0M5.6 12.1a10 10 0 0112.8 0M8.6 15.5a5.6 5.6 0 016.8 0"/><circle cx="12" cy="19.2" r="1.1"/></svg></span><span class="when">Digital Systems II, autumn 2025</span></span><h3>Wi-Fi controlled smart lighting prototype</h3><p>ESP32 firmware serving its own access point and web interface to switch four lighting channels.</p></a><a class="entry" href="p-hbridge.html"><span class="top"><span class="tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.2 4.6v14.8M19.8 4.6v14.8M4.2 12h4.6M15.2 12h4.6"/><circle cx="12" cy="12" r="3.2"/></svg></span><span class="when">Electronics II, spring 2025</span></span><h3>Discrete H-bridge motor driver PCB</h3><p>A four transistor bidirectional motor driver, schematic and board routed from scratch in Altium.</p></a><a class="entry" href="p-transmission.html"><span class="top"><span class="tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.2 20.6V5.6l-2.3 2.1M6.2 5.6l2.3 2.1M17.8 20.6V5.6l-2.3 2.1M17.8 5.6l2.3 2.1"/><path d="M3.9 8.8c4.1 3.2 12.1 3.2 16.2 0M3.9 12.6c4.1 3.2 12.1 3.2 16.2 0"/></svg></span><span class="when">Power System Analysis I, autumn 2025</span></span><h3>Transmission line parameter calculator</h3><p>A MATLAB tool computing per kilometre inductance and capacitance for transposed three phase lines.</p></a><a class="entry" href="p-network.html"><span class="top"><span class="tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.4 15.4c2.5 0 2.5-7.6 5-7.6s2.5 7.6 5 7.6 2.5-7.6 5-7.6 2.3 3.8 4.2 3.8"/><path d="M2.4 19.6h19.2"/></svg></span><span class="when">Electric Circuits I, spring 2024</span></span><h3>Fourth-order op-amp RLC network analysis</h3><p>Closed form responses and a state space model for a fourth order op amp network, checked against LTspice.</p></a></div>
   </div>
 </section>
-
-<section>
-  <p class="eyebrow">Completed</p>
-  <h2>Finished work</h2>
-  <div class="tiles" style="margin-bottom:3rem">
-
-  <a class="tile" href="p-controller.html">
-    <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="12" height="16" rx="2"/><path d="M3 13h12M3 16h12"/><path d="M20 5v9"/><circle cx="20" cy="17.5" r="2.5"/></svg></div>
-    <span class="when">Fall 2025 &middot; Digital Systems II</span>
-    <h3>Water level and temperature control system</h3>
-    <p class="sub">Bare-metal STM32F103 firmware regulating tank level and water temperature through two independent control loops.</p>
-    <span class="go">Read more <span>&rarr;</span></span>
-  </a>
-
-  <a class="tile" href="p-datapath.html">
-    <div class="ico"><svg viewBox="0 0 24 24" fill="none"><rect x="7" y="7" width="10" height="10" rx="2" fill="currentColor" opacity=".18"/><rect x="7" y="7" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.9"/><path d="M10 7V4.2M14 7V4.2M10 19.8V17M14 19.8V17M7 10H4.2M7 14H4.2M19.8 10H17M19.8 14H17" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></div>
-    <span class="when">Spring 2025 &middot; Digital Systems I</span>
-    <h3>8-bit arithmetic datapath in 74-series logic</h3>
-    <p class="sub">A complete 8-bit datapath built entirely from discrete 74LS TTL devices and simulated in Proteus.</p>
-    <span class="go">Read more <span>&rarr;</span></span>
-  </a>
-
-  <a class="tile" href="p-maglev.html">
-    <div class="ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="17.3" r="3.4" fill="currentColor" opacity=".22"/><path d="M5.5 4.2h13M6.8 7.4h10.4M8.2 10.6h7.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="17.3" r="3.4" stroke="currentColor" stroke-width="1.9"/></svg></div>
-    <span class="when">Spring 2026 &middot; Fundamentals of Mechatronics</span>
-    <h3>Magnetic levitation system with visual feedback</h3>
-    <p class="sub">A steel ball suspended beneath an electromagnet by a PID loop that uses an ESP32-CAM as its only position sensor.</p>
-    <span class="go">Read more <span>&rarr;</span></span>
-  </a>
-
-  <a class="tile" href="p-lighting.html">
-    <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M2 8.6a15 15 0 0120 0M5 12a10.5 10.5 0 0114 0M8.2 15.4a6 6 0 017.6 0" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="19.4" r="1.9" fill="currentColor"/></svg></div>
-    <span class="when">Fall 2025 &middot; Digital Systems II elective</span>
-    <h3>Wi-Fi controlled smart lighting prototype</h3>
-    <p class="sub">ESP32 firmware hosting its own access point and HTTP server, controlling four lighting channels in a scale model house.</p>
-    <span class="go">Read more <span>&rarr;</span></span>
-  </a>
-
-  <a class="tile" href="p-hbridge.html">
-    <div class="ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3.3" fill="currentColor" opacity=".22"/><path d="M4 4.5v15M20 4.5v15M4 12h4.7M15.3 12H20" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="12" r="3.3" stroke="currentColor" stroke-width="1.9"/></svg></div>
-    <span class="when">Spring 2025 &middot; Electronics II</span>
-    <h3>Discrete H-bridge motor driver PCB</h3>
-    <p class="sub">A four-transistor bidirectional DC motor driver laid out from scratch in Altium Designer.</p>
-    <span class="go">Read more <span>&rarr;</span></span>
-  </a>
-
-  <a class="tile" href="p-transmission.html">
-    <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M6 21V5.4M18 21V5.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M6 5.4L3.6 7.6M6 5.4l2.4 2.2M18 5.4l-2.4 2.2M18 5.4l2.4 2.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M3.4 8.6c4.2 3.4 13 3.4 17.2 0M3.4 12.6c4.2 3.4 13 3.4 17.2 0" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="6" cy="5.4" r="1.4" fill="currentColor"/><circle cx="18" cy="5.4" r="1.4" fill="currentColor"/></svg></div>
-    <span class="when">Fall 2025 &middot; Power System Analysis I</span>
-    <h3>Transmission line parameter calculator</h3>
-    <p class="sub">A MATLAB tool computing per-kilometre inductance and capacitance for transposed three-phase lines with arbitrary bundle geometry.</p>
-    <span class="go">Read more <span>&rarr;</span></span>
-  </a>
-
-  <a class="tile" href="p-network.html">
-    <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M2 15.5c2.6 0 2.6-8 5.2-8s2.6 8 5.2 8 2.6-8 5.2-8 2.4 4 4.4 4V20H2z" fill="currentColor" opacity=".16"/><path d="M2 15.5c2.6 0 2.6-8 5.2-8s2.6 8 5.2 8 2.6-8 5.2-8 2.4 4 4.4 4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M2 20h20" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></div>
-    <span class="when">Spring 2024 &middot; Electric Circuits I</span>
-    <h3>Fourth-order op-amp RLC network analysis</h3>
-    <p class="sub">Closed-form responses, a state-space model and driving-point impedance for an op-amp RLC network, verified against LTspice.</p>
-    <span class="go">Read more <span>&rarr;</span></span>
-  </a>
-</div>
-</section>
-
-</div>
-
+</main>
 <footer><div class="wrap">
-  <span class="mono">Alireza Montajab &middot; Tehran</span>
-  <span class="mono">Last updated August 2026</span>
+  <div class="sitemap">
+    <div><h4>Pages</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="experience.html">Experience</a></div>
+    <div><h4>Work</h4><a href="projects.html">All projects</a><a href="p-energy.html">Energy monitoring</a><a href="p-robot.html">Sensor fusion robot</a><a href="p-maglev.html">Magnetic levitation</a></div>
+    <div><h4>More</h4><a href="skills.html">Skills and languages</a><a href="activities.html">Activities and honours</a><a href="cv.pdf">Download CV</a></div>
+    <div><h4>Elsewhere</h4><a href="mailto:ar.montajab@gmail.com">Email</a><a href= + GH + >GitHub</a><a href= + LI + >LinkedIn</a><a href="contact.html">Contact</a></div>
+  </div>
+  <div class="colophon"><span>Alireza Montajab. 2026</span></div>
 </div></footer>
 
 <script src="motion.js" defer></script>
