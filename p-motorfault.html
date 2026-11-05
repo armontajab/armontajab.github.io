@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fault detection in a geared robot motor, Alireza Montajab</title>
+<meta name="description" content="A test rig that identifies the dynamic model of a geared DC motor from measured voltage, current and speed, and detects gearbox faults from the shift in model parameters.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>(function(){var d=document.documentElement;d.className="js";try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme:dark)").matches))d.setAttribute("data-theme","dark")}catch(e){}})()</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav"><div class="wrap"><a class="brand" href="index.html">Alireza Montajab</a><nav class="links" aria-label="Main"><a href="index.html">Home</a><a href="about.html">About</a><a href="experience.html">Experience</a><a href="projects.html" aria-current="page">Projects</a><a href="skills.html">Skills</a><a href="activities.html">Activities</a><a href="contact.html">Contact</a></nav><button class="themetoggle" type="button" aria-label="Switch colour theme"><span class="moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.5A8.6 8.6 0 019.5 3.6a8.6 8.6 0 1010.9 10.9z"/></svg></span><span class="sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.6v2.2M12 19.2v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg></span></button></div></header>
+<main>
+<div class="wrap">
+  <div class="detail">
+    <a class="back" href="projects.html">Back to projects</a>
+    <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.8" y="7.4" width="12.4" height="9.2" rx="2.4"/><path d="M15.2 12h2.6M17.8 9.8v4.4M20.6 10.9v2.2"/><path d="M5.6 12.4h1.3l.9-2.2 1.3 4 .9-1.8h1.3"/></svg></div>
+    <p class="data">Senior design project, 2026 to 2027 <span class="live">In progress</span></p>
+    <h1>Fault detection in a geared robot motor</h1>
+    <p class="lead">A test rig that identifies the dynamic model of a geared DC motor from its own voltage, current and speed, then detects and tells apart common gearbox faults by how far the identified parameters move from the healthy baseline.</p>
+    <div class="tags"><span class="tag">system identification</span><span class="tag">fault detection</span><span class="tag">DC motor</span><span class="tag">prediction error method</span><span class="tag">PRBS</span><span class="tag">recursive least squares</span><span class="tag">MATLAB</span><span class="tag">encoder</span></div>
+  </div>
+</div>
+<section style="border-top:none">
+  <div class="wrap">
+    <div class="prose"><h2>The problem</h2>
+<p>In robots that run continuously the gearbox wears out before the motor does. The teeth abrade, the clearance between gears grows until the shaft turns freely for an instant on every reversal, and friction rises as lubricant dries. All three are gradual and invisible from the outside, so a motor is usually replaced only once it has failed outright and taken the robot down with it.</p>
+<p>Each of those faults changes how the motor behaves dynamically. The same voltage reaches a different final speed, or takes a different time to get there. So the question is whether common gearbox faults can be detected, and told apart from one another, using nothing but the input voltage, the armature current and the shaft speed.</p>
+
+<h2>Approach</h2>
+<p>Neglecting the winding inductance reduces the voltage to speed behaviour of a small DC motor to a first order model with a static gain and a time constant, plus a constant term carrying dry friction. Those parameters are estimated from measured data by the prediction error method rather than derived from physical constants, which is what makes the comparison over time possible.</p>
+<p>The rig is a geared motor on a fixed mount, its output shaft coupled to an auxiliary shaft carrying an adjustable friction brake and an inertia disc, so each fault can be induced in a controlled and reversible way. An H bridge sets the voltage under PWM, the encoder gives speed and a current sensor gives current. Sampling runs off a hardware timer near 1 kHz so the interval is uniform, because identification assumes a known sampling period and jitter turns into model error. The input is a pseudo random binary sequence, which spreads energy across a wide band, with steps and reversals alongside it.</p>
+
+<h2>Fault signatures</h2>
+<p>Because the parameters carry physical meaning, each fault should leave a distinct mark on them. That is what makes classification possible rather than just detection.</p>
+<div class="tscroll"><table class="ptable">
+<thead><tr><th>Fault</th><th>How it is induced</th><th>Parameter</th><th>Expected effect on the model</th></tr></thead>
+<tbody>
+<tr><td>Higher friction</td><td>Adjustable friction brake on the output shaft</td><td><span class="p">b &uarr;</span></td><td>Static gain falls, time constant falls slightly</td></tr>
+<tr><td>Higher load inertia</td><td>Disc or weight mounted on the shaft</td><td><span class="p">J &uarr;</span></td><td>Time constant rises, static gain roughly unchanged</td></tr>
+<tr><td>Dry friction</td><td>Constant brake pressure in both directions</td><td><span class="p">T<sub>c</sub> &uarr;</span></td><td>The constant term shifts, with a dead zone at low voltages</td></tr>
+<tr><td>Gearbox backlash</td><td>Coupling between gearbox and shaft loosened</td><td><span class="p">nonlinear</span></td><td>Residual grows at the moments of direction reversal</td></tr>
+</tbody></table></div>
+<p>Detection comes from repeating the healthy experiment enough times to get a mean and a standard deviation per parameter, then flagging anything that lands more than three standard deviations out. The stretch goal moves estimation onto the microcontroller itself by recursive least squares, for a live reading of motor health while the robot works.</p></div>
+    <p class="note open"><strong>Status.</strong> Proposal stage. The rig, the identified model of the healthy motor and the fault signature table measured against real data will be published here as the work proceeds, along with the firmware and the analysis scripts.</p>
+    <div class="btns" style="margin-top:2rem"><a class="btn" href="projects.html">All projects</a></div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">
+  <div class="sitemap">
+    <div><h4>Pages</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="experience.html">Experience</a></div>
+    <div><h4>Work</h4><a href="projects.html">All projects</a><a href="p-motorfault.html">Motor fault detection</a><a href="p-robot.html">Sensor fusion robot</a><a href="p-maglev.html">Magnetic levitation</a></div>
+    <div><h4>More</h4><a href="skills.html">Skills and languages</a><a href="activities.html">Activities and honours</a><a href="cv.pdf">Download CV</a></div>
+    <div><h4>Elsewhere</h4><a href="mailto:ar.montajab@gmail.com">Email</a><a href="https://github.com/armontajab">GitHub</a><a href="https://linkedin.com/in/alirezamontajab">LinkedIn</a><a href="contact.html">Contact</a></div>
+  </div>
+  <div class="colophon"><span>Alireza Montajab. 2026</span></div>
+</div></footer>
+
+<script src="motion.js" defer></script>
+</body>
+</html>

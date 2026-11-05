@@ -243,6 +243,16 @@ ul.plain li::marker{color:var(--accent)}
 .prose h2{font-size:1.18rem;margin:2.3rem 0 .75rem}
 .prose h2:first-child{margin-top:0}
 .prose p{font-size:1rem;color:var(--ink-2)}
+.tscroll{overflow-x:auto;margin:1.2rem 0 .5rem}
+.ptable{width:100%;min-width:33rem;border-collapse:collapse;font-size:.92rem}
+.ptable th{text-align:left;font-weight:600;font-size:.74rem;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--muted);padding:0 1rem .55rem 0;
+  border-bottom:1px solid var(--rule)}
+.ptable td{padding:.72rem 1rem .72rem 0;border-bottom:1px solid var(--rule-2);
+  color:var(--ink-2);vertical-align:top}
+.ptable td:first-child{color:var(--ink);font-weight:500}
+.ptable th:last-child,.ptable td:last-child{padding-right:0}
+.ptable .p{font-family:var(--mono);font-size:.85em;color:var(--accent-ink);white-space:nowrap}
 .prose code{font-family:var(--mono);font-size:.86em;background:var(--rule-2);padding:.1rem .34rem;border-radius:5px}
 .tags{display:flex;flex-wrap:wrap;gap:.35rem;margin:1.5rem 0 0}
 .tag{font-family:var(--mono);font-size:.71rem;color:var(--accent-ink);background:var(--accent-wash);
