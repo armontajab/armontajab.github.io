@@ -18,7 +18,7 @@
   <div class="detail">
     <a class="back" href="projects.html">Back to projects</a>
     <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.8" y="7.4" width="12.4" height="9.2" rx="2.4"/><path d="M15.2 12h2.6M17.8 9.8v4.4M20.6 10.9v2.2"/><path d="M5.6 12.4h1.3l.9-2.2 1.3 4 .9-1.8h1.3"/></svg></div>
-    <p class="data">Senior design project, 2026 to 2027 <span class="live">In progress</span></p>
+    <p class="data">Senior design project, 2026 to 2027 <span class="live">Proposal stage</span></p>
     <h1>Fault detection in a geared robot motor</h1>
     <p class="lead">A test rig that identifies the dynamic model of a geared DC motor from its own voltage, current and speed, then detects and tells apart common gearbox faults by how far the identified parameters move from the healthy baseline.</p>
     <div class="tags"><span class="tag">system identification</span><span class="tag">fault detection</span><span class="tag">DC motor</span><span class="tag">prediction error method</span><span class="tag">PRBS</span><span class="tag">recursive least squares</span><span class="tag">MATLAB</span><span class="tag">encoder</span></div>
@@ -32,10 +32,10 @@
 
 <h2>Approach</h2>
 <p>Neglecting the winding inductance reduces the voltage to speed behaviour of a small DC motor to a first order model with a static gain and a time constant, plus a constant term carrying dry friction. Those parameters are estimated from measured data by the prediction error method rather than derived from physical constants, which is what makes the comparison over time possible.</p>
-<p>The rig is a geared motor on a fixed mount, its output shaft coupled to an auxiliary shaft carrying an adjustable friction brake and an inertia disc, so each fault can be induced in a controlled and reversible way. An H bridge sets the voltage under PWM, the encoder gives speed and a current sensor gives current. Sampling runs off a hardware timer near 1 kHz so the interval is uniform, because identification assumes a known sampling period and jitter turns into model error. The input is a pseudo random binary sequence, which spreads energy across a wide band, with steps and reversals alongside it.</p>
+<p>The rig is a geared motor on a fixed mount, its output shaft coupled to an auxiliary shaft carrying an adjustable friction brake and an inertia disc, so each fault can be induced in a controlled and reversible way. An H bridge sets the voltage under PWM, the encoder gives speed and a current sensor gives current. Sampling runs off a hardware timer near 1 kHz so the interval is uniform, because identification assumes a known sampling period and jitter turns into model error. The input is a pseudo-random binary sequence, which spreads energy across a wide band, with steps and reversals alongside it.</p>
 
 <h2>Fault signatures</h2>
-<p>Because the parameters carry physical meaning, each fault should leave a distinct mark on them. That is what makes classification possible rather than just detection.</p>
+<p>Because the parameters carry physical meaning, a fault should leave a distinct mark on them, which is what makes classification possible rather than just detection. Three of the four shift a parameter directly. Backlash is nonlinear and does not, so it has to be caught a different way, in the residual at the reversals.</p>
 <div class="tscroll"><table class="ptable">
 <thead><tr><th>Fault</th><th>How it is induced</th><th>Parameter</th><th>Expected effect on the model</th></tr></thead>
 <tbody>
@@ -52,10 +52,10 @@
 </main>
 <footer><div class="wrap">
   <div class="sitemap">
-    <div><h4>Pages</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="experience.html">Experience</a></div>
-    <div><h4>Work</h4><a href="projects.html">All projects</a><a href="p-motorfault.html">Motor fault detection</a><a href="p-robot.html">Sensor fusion robot</a><a href="p-maglev.html">Magnetic levitation</a></div>
-    <div><h4>More</h4><a href="skills.html">Skills and languages</a><a href="activities.html">Activities and honours</a><a href="cv.pdf">Download CV</a></div>
-    <div><h4>Elsewhere</h4><a href="mailto:ar.montajab@gmail.com">Email</a><a href="https://github.com/armontajab">GitHub</a><a href="https://linkedin.com/in/alirezamontajab">LinkedIn</a><a href="contact.html">Contact</a></div>
+    <div><h3>Pages</h3><a href="index.html">Home</a><a href="about.html">About</a><a href="experience.html">Experience</a></div>
+    <div><h3>Work</h3><a href="projects.html">All projects</a><a href="p-motorfault.html">Motor fault detection</a><a href="p-robot.html">Sensor fusion robot</a><a href="p-maglev.html">Magnetic levitation</a></div>
+    <div><h3>More</h3><a href="skills.html">Skills and languages</a><a href="activities.html">Activities and honours</a><a href="cv.pdf">Download CV</a></div>
+    <div><h3>Elsewhere</h3><a href="mailto:ar.montajab@gmail.com">Email</a><a href="https://github.com/armontajab">GitHub</a><a href="https://linkedin.com/in/alirezamontajab">LinkedIn</a><a href="contact.html">Contact</a></div>
   </div>
   <div class="colophon"><span>Alireza Montajab. 2026</span></div>
 </div></footer>

@@ -27,14 +27,14 @@
 <section style="border-top:none">
   <div class="wrap">
     <div class="prose"><h2>Why it cannot work without control</h2>
-<p>The attractive force between coil and ball varies inversely with the square of the distance, which makes the equilibrium inherently unstable. Move the ball slightly closer and the force rises until it snaps to the coil; move it slightly away and the force falls until it drops. Earnshaw's theorem rules out stable suspension by static magnetic fields altogether. The only way through is active control: measure the position continuously and adjust the current fast enough to hold the balance.</p>
+<p>The attractive force between coil and ball varies inversely with the square of the distance, which makes the equilibrium inherently unstable. Move the ball slightly closer and the force rises until it snaps to the coil; move it slightly away and the force falls until it drops. Earnshaw's theorem rules out stable suspension by static magnetic fields alone. The only way through is active control: measure the position continuously and adjust the current fast enough to hold the balance.</p>
 
 <h2>A camera as the sensor</h2>
 <p>Instead of an infrared or Hall-effect sensor, this system uses an ESP32-CAM for both sensing and control. Each cycle it captures a 96&times;96 grayscale frame and extracts the ball's vertical position from the centroid of the dark pixels. The same microcontroller then runs the control loop and drives the coil, so sensing, decision and actuation all live on one chip.</p>
 
 <h2>The control loop</h2>
 <p>A PID controller converts position error into a PWM duty cycle. The proportional term responds to distance from target, the integral term accumulates over time to supply the baseline current that cancels the ball's weight, and the derivative term reacts to velocity, acting as a brake against oscillation.</p>
-<p>Tuned gains were Kp 2.5, Ki 0.5 and Kd 55. That derivative gain is unusually large, and deliberately so: a steel ball falls fast, and without an aggressive velocity response the controller corrects too late. PWM output is constrained to a narrow 110-140 band, the floor keeps the force from dropping low enough to let the ball fall, the ceiling keeps it from rising high enough to pull the ball onto the coil.</p>
+<p>Tuned gains were Kp 2.5, Ki 0.5 and Kd 55, putting the derivative term more than twenty times the proportional one. That is deliberate: a steel ball falls fast, and without an aggressive velocity response the controller corrects too late. PWM output is constrained to a narrow 110-140 band, the floor keeps the force from dropping low enough to let the ball fall, the ceiling keeps it from rising high enough to pull the ball onto the coil.</p>
 
 <h2>Power stage</h2>
 <p>Coil current is switched by a logic-level IRLZ44N MOSFET driven from a GPIO pin through a 10 &Omega; series resistor, with a 10 k&Omega; pull-down holding the gate low at startup. The logic-level part matters: a standard MOSFET needs a higher gate voltage than the 3.3 V the ESP32 provides and would turn on only partially, dissipating heat instead of switching cleanly. A 1N4007 flyback diode across the hand-wound 220-turn coil clamps the inductive spike at turn-off, and an LM7805 supplies 5 V from the 12 V rail.</p>
@@ -44,17 +44,17 @@
 
 <h2>What I took from it</h2>
 <p>This project contains all three parts of a mechatronic system in one loop, a sensor that measures, a controller that decides, an actuator that acts, and none of them can be evaluated in isolation. A tuning change and a lighting change look completely different but can fix the same symptom.</p></div>
-    <p class="note">Fundamentals of Mechatronics project &middot; Supervisor: Dr. Nouri-Manzar , Shahid Beheshti University, Spring 2026</p>
+    <p class="note">Fundamentals of Mechatronics project &middot; Supervisor: Dr. Nouri-Manzar, Shahid Beheshti University, spring 2026</p>
     <div class="btns" style="margin-top:2rem"><a class="btn key" href="https://github.com/armontajab/esp32cam-magnetic-levitation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.2 20.8c-4.4 1.3-4.4-2.3-6.2-2.8m12.4 5.6v-3.5c0-1 .1-1.4-.5-1.9 2.8-.3 5.4-1.4 5.4-6a4.7 4.7 0 00-1.3-3.2 4.3 4.3 0 00-.1-3.3s-1.1-.3-3.5 1.3a12.1 12.1 0 00-6.4 0C6.6 5.4 5.5 5.7 5.5 5.7a4.3 4.3 0 00-.1 3.3 4.7 4.7 0 00-1.3 3.3c0 4.5 2.6 5.6 5.4 6-.4.4-.6.9-.6 1.5v3.4"/></svg>View repository</a><a class="btn" href="projects.html">All projects</a></div>
   </div>
 </section>
 </main>
 <footer><div class="wrap">
   <div class="sitemap">
-    <div><h4>Pages</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="experience.html">Experience</a></div>
-    <div><h4>Work</h4><a href="projects.html">All projects</a><a href="p-motorfault.html">Motor fault detection</a><a href="p-robot.html">Sensor fusion robot</a><a href="p-maglev.html">Magnetic levitation</a></div>
-    <div><h4>More</h4><a href="skills.html">Skills and languages</a><a href="activities.html">Activities and honours</a><a href="cv.pdf">Download CV</a></div>
-    <div><h4>Elsewhere</h4><a href="mailto:ar.montajab@gmail.com">Email</a><a href="https://github.com/armontajab">GitHub</a><a href="https://linkedin.com/in/alirezamontajab">LinkedIn</a><a href="contact.html">Contact</a></div>
+    <div><h3>Pages</h3><a href="index.html">Home</a><a href="about.html">About</a><a href="experience.html">Experience</a></div>
+    <div><h3>Work</h3><a href="projects.html">All projects</a><a href="p-motorfault.html">Motor fault detection</a><a href="p-robot.html">Sensor fusion robot</a><a href="p-maglev.html">Magnetic levitation</a></div>
+    <div><h3>More</h3><a href="skills.html">Skills and languages</a><a href="activities.html">Activities and honours</a><a href="cv.pdf">Download CV</a></div>
+    <div><h3>Elsewhere</h3><a href="mailto:ar.montajab@gmail.com">Email</a><a href="https://github.com/armontajab">GitHub</a><a href="https://linkedin.com/in/alirezamontajab">LinkedIn</a><a href="contact.html">Contact</a></div>
   </div>
   <div class="colophon"><span>Alireza Montajab. 2026</span></div>
 </div></footer>

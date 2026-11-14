@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Differential drive robot with sensor fusion, Alireza Montajab</title>
-<meta name="description" content="A two-wheel differential drive platform that estimates its own position and heading by fusing two independent sources, wheel encoder odometry and an inerti">
+<meta name="description" content="A two-wheel differential drive platform that tracks its pose from wheel odometry, with heading corrected by a Kalman filter fusing odometry and an inertial gyroscope.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -20,8 +20,8 @@
     <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.6" y="7.8" width="14.8" height="9.2" rx="2.4"/><path d="M9.2 12.3h.01M14.8 12.3h.01M12 4.6v3.2M3 11.6v1.8M21 11.6v1.8M8.4 17v2.4M15.6 17v2.4"/></svg></div>
     <p class="data">Independent, from September 2026 <span class="live">In progress</span></p>
     <h1>Differential drive robot with sensor fusion</h1>
-    <p class="lead">A two-wheel differential drive platform that estimates its own position and heading by fusing two independent sources, wheel encoder odometry and an inertial gyroscope, through a Kalman filter, and reports its state over MQTT.</p>
-    <div class="tags"><span class="tag">ESP32</span><span class="tag">Kalman filter</span><span class="tag">sensor fusion</span><span class="tag">odometry</span><span class="tag">MPU6050</span><span class="tag">MQTT</span><span class="tag">PID</span><span class="tag">FreeRTOS-style scheduling</span></div>
+    <p class="lead">A two-wheel differential drive platform that tracks its own pose from wheel encoder odometry, with heading corrected by a Kalman filter that fuses the odometry estimate with an inertial gyroscope, and reports its state over MQTT.</p>
+    <div class="tags"><span class="tag">ESP32</span><span class="tag">Kalman filter</span><span class="tag">sensor fusion</span><span class="tag">odometry</span><span class="tag">MPU6050</span><span class="tag">MQTT</span><span class="tag">PID</span></div>
   </div>
 </div>
 <section style="border-top:none">
@@ -31,7 +31,7 @@
 <p>Wheel odometry is accurate over short distances but accumulates error: every slip is integrated and never recovered. A gyroscope does not slip, but it drifts. The two failure modes are independent, which is exactly the condition under which fusion helps. A Kalman filter combines them into an estimate better than either alone, and demonstrating that improvement quantitatively is the scientific core of the project, not a side note.</p>
 
 <h2>Platform</h2>
-<p>A two-level chassis carrying two TT gearmotors with 57.5 mm wheels and a ball caster, driven through an L298N. Encoder discs with 20 slots and LM393 modules give roughly 9 mm of travel per pulse. An MPU6050 sits between the two wheels on the rotation axis. Power comes from two 18650 cells in series through a BMS and an LM2596 buck to the 5 V logic rail.</p>
+<p>An ESP32 carries the firmware. A two-level chassis holds two TT gearmotors with 57.5 mm wheels and a ball caster, driven through an L298N, with wheel speed held to its setpoint by a PID loop so that a commanded velocity means the same thing on both wheels. Encoder discs with 20 slots and LM393 modules give roughly 9 mm of travel per pulse. An MPU6050 sits between the two wheels on the rotation axis. Power comes from two 18650 cells in series through a BMS and an LM2596 buck to the 5 V logic rail.</p>
 <p>Wheel speed is measured from the interval between pulses rather than by counting pulses in a fixed window, at low speeds the period method stays accurate where pulse counting quantises badly.</p>
 
 <h2>Estimation</h2>
@@ -43,21 +43,21 @@
 <dl class="def"><dt>Straight line</dt><dd><p>3 m, five repetitions, lateral and longitudinal error, with and without closed-loop speed control</p></dd></dl>
 <dl class="def"><dt>Rotation</dt><dd><p>360&deg; in place, five repetitions, heading error for odometry alone, gyro alone, and fusion</p></dd></dl>
 <dl class="def"><dt>Square test</dt><dd><p>1&times;1 m square returning to origin, both directions, the classic measure of odometry quality</p></dd></dl>
-<dl class="def"><dt>Slip disturbance</dt><dd><p>Controlled slip on a low-friction surface, showing fusion degrading more gracefully than odometry alone</p></dd></dl>
+<dl class="def"><dt>Slip disturbance</dt><dd><p>Controlled slip on a low-friction surface, showing fusion degrading more gracefully than odometry alone, measured as final position error over repeated runs of the same path</p></dd></dl>
 
 <h2>Environment and telemetry</h2>
-<p>An MQ-5 sensor detects combustible gas and an HC-SR04 handles obstacle avoidance. Pose, gas concentration, environmental data and battery state are published over MQTT to a broker on a laptop, with an OLED showing local state.</p></div>
-    <p class="note open"><strong>Status.</strong> In build. Currently working through component testing and mechanical assembly. Comparative results for odometry alone against odometry fused with the IMU will be published here, along with the firmware.</p>
+<p>An MQ-5 sensor detects combustible gas and an HC-SR04 handles obstacle avoidance. Pose, gas concentration and pack voltage, read through a divider on the ADC, are published over MQTT to a broker on a laptop, with an OLED showing local state.</p></div>
+    <p class="note open"><strong>Status.</strong> In progress. Currently working through component testing and mechanical assembly. Comparative results for odometry alone against odometry fused with the IMU will be published here, along with the firmware.</p>
     <div class="btns" style="margin-top:2rem"><a class="btn" href="projects.html">All projects</a></div>
   </div>
 </section>
 </main>
 <footer><div class="wrap">
   <div class="sitemap">
-    <div><h4>Pages</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="experience.html">Experience</a></div>
-    <div><h4>Work</h4><a href="projects.html">All projects</a><a href="p-motorfault.html">Motor fault detection</a><a href="p-robot.html">Sensor fusion robot</a><a href="p-maglev.html">Magnetic levitation</a></div>
-    <div><h4>More</h4><a href="skills.html">Skills and languages</a><a href="activities.html">Activities and honours</a><a href="cv.pdf">Download CV</a></div>
-    <div><h4>Elsewhere</h4><a href="mailto:ar.montajab@gmail.com">Email</a><a href="https://github.com/armontajab">GitHub</a><a href="https://linkedin.com/in/alirezamontajab">LinkedIn</a><a href="contact.html">Contact</a></div>
+    <div><h3>Pages</h3><a href="index.html">Home</a><a href="about.html">About</a><a href="experience.html">Experience</a></div>
+    <div><h3>Work</h3><a href="projects.html">All projects</a><a href="p-motorfault.html">Motor fault detection</a><a href="p-robot.html">Sensor fusion robot</a><a href="p-maglev.html">Magnetic levitation</a></div>
+    <div><h3>More</h3><a href="skills.html">Skills and languages</a><a href="activities.html">Activities and honours</a><a href="cv.pdf">Download CV</a></div>
+    <div><h3>Elsewhere</h3><a href="mailto:ar.montajab@gmail.com">Email</a><a href="https://github.com/armontajab">GitHub</a><a href="https://linkedin.com/in/alirezamontajab">LinkedIn</a><a href="contact.html">Contact</a></div>
   </div>
   <div class="colophon"><span>Alireza Montajab. 2026</span></div>
 </div></footer>
